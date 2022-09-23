@@ -85,8 +85,8 @@ describe('Testing REST API', () => {
   });
 
 
-  test('Create a new stick', async () => {
-    let response = await request.post('/stick').send({
+  test('Create a new user', async () => {
+    let response = await request.post('/user').send({
       manufacturer: 'Promark',
       model: '5A',
     });
@@ -95,22 +95,22 @@ describe('Testing REST API', () => {
     expect(response.body.model).toEqual('5A');
   });
 
-  test('Read all sticks', async () => {
-    let response = await request.get('/stick');
+  test('Read all users', async () => {
+    let response = await request.get('/user');
     expect(response.status).toEqual(200);
     expect(response.body[0].manufacturer).toEqual('Promark');
     expect(response.body[0].model).toEqual('5A');
   });
 
-  test('Read one stick', async () => {
-    let response = await request.get('/stick/1');
+  test('Read one user', async () => {
+    let response = await request.get('/user/1');
     expect(response.status).toEqual(200);
     expect(response.body[0].manufacturer).toEqual('Promark');
     expect(response.body[0].model).toEqual('5A');
   });
 
-  test('Update a stick', async () => {
-    let response = await request.put('/stick/1').send({
+  test('Update a user', async () => {
+    let response = await request.put('/user/1').send({
       manufacturer: 'Vic Firth',
       model: '5B',
     });
@@ -119,8 +119,8 @@ describe('Testing REST API', () => {
     expect(response.body[0].model).toEqual('5B');
   });
 
-  test('Delete a stick', async () => {
-    let response = await request.delete('/stick/1');
+  test('Delete a user', async () => {
+    let response = await request.delete('/user/1');
     expect(response.status).toEqual(200);
     expect(response.body).toEqual([]);
   });
