@@ -1,11 +1,11 @@
 'use strict';
 
+require('dotenv').config();
 const express = require('express');
 const notFound = require('./error-handlers/404');
 const errorHandler = require('./error-handlers/500');
 const logger = require('./middleware/logger');
-const cymbalRouter = require('./routes/cymbal');
-const userRouter = require('./routes/user');
+const router = require('./routes/v1');
 
 const PORT = process.env.PORT || 3002;
 
@@ -13,8 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(logger);
 
-app.use(cymbalRouter);
-app.use(userRouter);
+app.use(router);
 
 app.use('*', notFound);
 app.use(errorHandler);
