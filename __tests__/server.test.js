@@ -22,12 +22,12 @@ describe('Testing REST API', () => {
   });
 
   test('Handles bad requests', async () => {
-    const response = await request.post('/cymbal').send({ info: 'bad' });
+    const response = await request.post('/api/v1/cymbal').send({ info: 'bad' });
     expect(response.status).toEqual(500);
   });
 
   test('Create a new cymbal', async () => {
-    let response = await request.post('/cymbal').send({
+    let response = await request.post('/api/v1/cymbal').send({
       manufacturer: 'Zildjian',
       series: 'A Custom',
       model: 'Crash',
@@ -43,7 +43,7 @@ describe('Testing REST API', () => {
   });
 
   test('Read all cymbals', async () => {
-    let response = await request.get('/cymbal');
+    let response = await request.get('/api/v1/cymbal');
     expect(response.status).toEqual(200);
     expect(response.body[0].manufacturer).toEqual('Zildjian');
     expect(response.body[0].series).toEqual('A Custom');
@@ -53,7 +53,7 @@ describe('Testing REST API', () => {
   });
 
   test('Read one cymbal', async () => {
-    let response = await request.get('/cymbal/1');
+    let response = await request.get('/api/v1/cymbal/1');
     expect(response.status).toEqual(200);
     expect(response.body[0].manufacturer).toEqual('Zildjian');
     expect(response.body[0].series).toEqual('A Custom');
@@ -63,7 +63,7 @@ describe('Testing REST API', () => {
   });
 
   test('Update a cymbal', async () => {
-    let response = await request.put('/cymbal/1').send({
+    let response = await request.put('/api/v1/cymbal/1').send({
       manufacturer: 'Zildjian',
       series: 'K Custom',
       model: 'Splash',
@@ -79,50 +79,8 @@ describe('Testing REST API', () => {
   });
 
   test('Delete a cymbal', async () => {
-    let response = await request.delete('/cymbal/1');
+    let response = await request.delete('/api/v1/cymbal/1');
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual([]);
+    expect(response.text).toEqual('Record Deleted');
   });
-
-
-  test('Create a new user', async () => {
-    let response = await request.post('/user').send({
-      manufacturer: 'Promark',
-      model: '5A',
-    });
-    expect(response.status).toEqual(200);
-    expect(response.body.manufacturer).toEqual('Promark');
-    expect(response.body.model).toEqual('5A');
-  });
-
-  test('Read all users', async () => {
-    let response = await request.get('/user');
-    expect(response.status).toEqual(200);
-    expect(response.body[0].manufacturer).toEqual('Promark');
-    expect(response.body[0].model).toEqual('5A');
-  });
-
-  test('Read one user', async () => {
-    let response = await request.get('/user/1');
-    expect(response.status).toEqual(200);
-    expect(response.body[0].manufacturer).toEqual('Promark');
-    expect(response.body[0].model).toEqual('5A');
-  });
-
-  test('Update a user', async () => {
-    let response = await request.put('/user/1').send({
-      manufacturer: 'Vic Firth',
-      model: '5B',
-    });
-    expect(response.status).toEqual(200);
-    expect(response.body[0].manufacturer).toEqual('Vic Firth');
-    expect(response.body[0].model).toEqual('5B');
-  });
-
-  test('Delete a user', async () => {
-    let response = await request.delete('/user/1');
-    expect(response.status).toEqual(200);
-    expect(response.body).toEqual([]);
-  });
-
 });
