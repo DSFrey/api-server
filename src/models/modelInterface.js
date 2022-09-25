@@ -40,7 +40,7 @@ class ModelInterface {
 
   async delete(id) {
     try {
-      await this.model.destroy({where:{id}});
+      await this.model.destroy({ where: { id } });
       return 'Record Deleted';
     } catch (error) {
       throw new Error(error);

@@ -4,40 +4,26 @@
 
 ## Problem Domain
 
-Concise Description of why this app exists
+A basic server to practice CRUD functions on a SQL database and adaptable routing techniques.
 
 ## Links and Resources
 
-- [ci/cd](http://xyz.com) (GitHub Actions)
-- [back-end server url](http://xyz.com) (when applicable)
-- [front-end application](http://xyz.com) (when applicable)
+- [ci/cd](https://github.com/DSFrey/api-server/actions)
+- [back-end server url](https://dsfrey-api-server.herokuapp.com/)
 
 ## Setup
 
 ### `.env` requirements (where applicable)
-
-i.e.
 
 - `PORT` - Port Number
 - `DATABASE_URL` - URL to the running Postgres instance/db
 
 ### How to initialize/run your application (where applicable)
 
-- e.g. `npm start`
-
-### How to use your library (where applicable)
-
-### Features / Routes
-
-- Feature One: Details of feature
-- GET : `/hello` - specific route to hit
-
-### Tests
-
-- How do you run tests?
-- Any tests of note?
-- Describe any tests that you did not complete, skipped, etc
+- `npm run db:config` then edit the created config file.
+- `npm run db:create` to create the database.
+- `npm start` to start the application.
 
 ### UML
 
-Link to an image of the UML for your application and response to events
+![UML for api-server](./assets/api-server.png)

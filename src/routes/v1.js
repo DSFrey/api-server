@@ -25,19 +25,19 @@ router.get('/api/v1/:route/:id?', async (req, res) => {
   }
 });
 
-router.put('/api/v1/:route/:id', async (req,res)=>{
+router.put('/api/v1/:route/:id', async (req, res) => {
   try {
-    let { id,route} = req.params;
-    const record = await interfaceTable[route].update(req.body,id);
+    let { id, route } = req.params;
+    const record = await interfaceTable[route].update(req.body, id);
     res.status(200).send(record);
   } catch (error) {
     errorHandler(error, req, res);
   }
 });
 
-router.delete('/api/v1/:route/:id', async (req,res)=>{
+router.delete('/api/v1/:route/:id', async (req, res) => {
   try {
-    let {id,route} = req.params;
+    let { id, route } = req.params;
     let message = await interfaceTable[route].delete(id);
     res.status(200).send(message);
   } catch (error) {
